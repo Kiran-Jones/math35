@@ -1,38 +1,76 @@
 \documentclass[12pt]{article}
-\usepackage{fullpage,enumitem,amsmath,amssymb,graphicx}
+\usepackage{fullpage,enumitem,amsmath,amssymb,graphicx,amsthm,fancyhdr}
 \usepackage{../../../macros}
 
-\SetupAssignment{Math 35}{Summer 2025}{Homework 1}
-
-
+\SetupAssignment{Math 35}{25X}{Homework 1}
 \author{Kiran Jones \\
   \texttt{kiran.p.jones.27@dartmouth.edu}}
+\date{Due: July 2, 2025}
+
+\pagestyle{fancy}
+\lhead{Math 35 – HW 1}\rhead{Kiran Jones}\cfoot{\thepage}
+\setlength{\headheight}{14.49998pt}
+\setlength{\headsep}{10pt}
+
+
 \begin{document}
   \maketitle
-  % \begin{center}
-
-  % \vspace{-0.3in}
-  % \begin{tabular}{rl}
-  % Collaborators: & 
-  % \end{tabular}
-  % \end{center}
-
-  % By turning in this assignment, I agree by the Dartmouth honor code and declare
-  % that all of this is my own work.
-
+  \thispagestyle{empty}
   \noindent
   \rule{\linewidth}{0.4pt}
+  \newpage
   
-  \section*{Problem 1}
+  
+  \section*{Problem 6}
+  \setcounter{page}{1}
+  Prove that the reciprocal of an irrational number is an irrational number.
 
-  \begin{enumerate}[label=(\alph*)]
-    \item 
+  \begin{proof}
+    Let $x$ be some irrational number. Assume that its reciprocal, $\frac{1}{x} = \frac{p}{q}$ is a rational number for some integers $p, q$ with $p, q \neq 0$. If $p$ or $q = 0$, then $x$ cannot be irrational: either $x = 0$ or $x$ is undefined. Solving for $x$ gives us:
+    \[
+      x = \frac{q}{p}.
+    \]
+    This contradicts the assumption that $x$ is irrational. Therefore, the reciprocal of an irrational number must also be irrational.
+  \end{proof}
+  \newpage
+
+
+  \section*{Problem 12}
+  Prove that $\sqrt{2} + \sqrt{3}$ is irrational.
+
+  \begin{proof}
+    Let $x = \sqrt{2} + \sqrt{3}$. Assume that $x$ is rational, i.e. $x \in \mathbb{Q}$. Then we can rearrange the equation to isolate one of the square roots: $\sqrt{3} = x - \sqrt{2}$.
+    Squaring both sides gives us:
+    \[
+      3 = (x - \sqrt{2})^2 = x^2 - 2x\sqrt{2} + 2.
+    \]
+    Rearranging this gives us:
+    \[
+      2x\sqrt{2} = x^2 - 1.
+    \]
+    Dividing both sides by $2x$ (as $x \neq 0$) gives us:
+    \[
+      \sqrt{2} = \frac{x^2 - 1}{2x}.
+    \]
+    Since $x$ is rational, both $x^2 - 1$ and $2x$ are rational numbers, and thus their quotient $\frac{x^2 - 1}{2x}$ is also rational. This implies that $\sqrt{2}$ is rational, which contradicts the fact that $\sqrt{2}$ is irrational. Therefore, our assumption that $x = \sqrt{2} + \sqrt{3}$ is rational must be false, and $\sqrt{2} + \sqrt{3}$ is irrational.
+  \end{proof}
+  \newpage
+
+
+  \section*{Problem 20}
+  Use the properties of the ordered field to prove the following: if $x < y$ and $z > 0$, then $xz < yz$.
+
+  \medskip
+  \noindent\textbf{Ordered Field Properties}
+  \begin{enumerate} 
+    \item If $x > 0$ and $y > 0$, then $x + y > 0$.
+    \item If $x > 0$ and $y > 0$, then $xy > 0$.
+    \item $x < y$ if and only if $y - x > 0$.
   \end{enumerate}
 
-  \section*{Problem 2}
+  \begin{proof}
+    Let $x, y, z \in F$, where $F$ is an ordered field. Using OF-P3, as $x < y$, then $y - x > 0$. Let $a$ equal $y - x$. Then, we have $a > 0$. Using OF-P2, as $a > 0$ and $z > 0$, we can combine these two inequalities to get $az > 0$. Expanding $az$ gives us $az = (y - x)z = yz - xz$, or $yz - xz > 0$. Applying OF-P3, we can rearrange this inequality to be $xz < yz$. Thus, if $x < y$ and $z > 0 $, then $xz < yz$.
+  \end{proof}
 
-  \begin{enumerate}[label=(\alph*)]
-    \item 
-  \end{enumerate}
 
 \end{document}
