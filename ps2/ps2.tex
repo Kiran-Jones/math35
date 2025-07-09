@@ -1,0 +1,159 @@
+\documentclass[12pt]{article}
+\usepackage{fullpage,enumitem,amsmath,amssymb,graphicx,amsthm,fancyhdr}
+\usepackage{../../../macros}
+
+\SetupAssignment{Math 35}{25X}{Homework 2}
+\author{Kiran Jones \\
+  \texttt{kiran.p.jones.27@dartmouth.edu}}
+\date{Due: July 9, 2025}
+
+\pagestyle{fancy}
+\lhead{Math 35 – HW 2}\rhead{Kiran Jones}\cfoot{\thepage}
+\setlength{\headheight}{14.49998pt}
+\setlength{\headsep}{10pt}
+
+
+\begin{document}
+  \maketitle
+  \thispagestyle{empty}
+  \noindent
+  \rule{\linewidth}{0.4pt}
+  \newpage
+  
+  
+  \section*{Problem 12}
+  \setcounter{page}{1}
+  Let $x$ and $a$ be real numbers. Suppose that $x < a + \epsilon$ for all positive numbers $\epsilon$. Prove that $x \leq a$.
+
+  \begin{proof}
+    Assume that $x > a$. Then, we can let $\epsilon = x - a$, which must be positive as $x > a$. We can substitute $\epsilon$ into $x < a + \epsilon$, yielding $x < a + x - x = x$ which is false, contradicting the assumption. Therefore, we must have $x \leq a$.
+  \end{proof}
+
+  \newpage
+
+
+
+  \section*{Problem 14}
+  Find an example of an interval that satisfies the given condition.
+
+  \begin{enumerate}[label=(\alph*)]
+    \item a bounded, open interval that contians no integers
+    
+    $(\sqrt{2}, \frac{\pi}{2})$
+    \item a bounded, closed interval that contains exactly two integers
+    
+    $[1, 2]$
+    \item an unbounded, closed interval that contians no negative numbers
+    
+    $[1, \infty)$
+    \item an unbounded, open interval that contains all the positive integers, but no other integers
+    
+    $(0.5, \infty)$
+  \end{enumerate}
+
+  \newpage
+
+
+
+  \section*{Problem 17}
+  Let $a$ and $b$ be real numbers with $a < b$, and let $x$ be a real number. Suppose that for each $\epsilon > 0$, the number x belongs to the open interval $(a - \epsilon, b + \epsilon)$. Prove that $x$ belongs to the interval $[a, b]$.
+
+  \begin{proof}
+    As $x \in (a - \epsilon, b + \epsilon)$, $a - \epsilon < x < b + \epsilon$. Assume that $x < a$. Then let $\epsilon = \frac{a - x}{2}$, which is positive as $x < a$. We can substitute $\epsilon$ into the inequality $a - \epsilon < x$, yielding $a - \frac{a - x}{2} < x$. Simplifying this gives us $a - \frac{a}{2} + \frac{x}{2} < x$, or $a < x$, which violates our assumption that $x < a$. Therefore, we must have $x \geq a$. 
+    Now, assume that $x > b$. Then let $\epsilon = \frac{x - b}{2}$, which is positive as $x > b$. We can substitute $\epsilon$ into the inequality $x < b + \epsilon$, yielding $x < b + \frac{x - b}{2}$. Simplifying this gives us $x < \frac{b}{2} + \frac{x}{2}$, or $x < b$, which contradicts the assumption that $x > b$. Therefore, we must have $x \leq b$. Thus, we conclude that $a \leq x \leq b$, or $x \in [a, b]$.
+  \end{proof}
+
+  \newpage
+
+
+
+  \section*{Problem 18}
+  A set $S$ of real numbers is defined to be an open set if it has the following property: for each $x \in S$, there exists a positive number $r$ such that $(x - r, x + r) \subseteq S$. The set $S$ is closed if the set $\mathbb{R} \setminus S$ is open.
+  \begin{enumerate}[label=(\alph*)]
+    
+    \item Prove that the interval $(a, b)$ is an open set.
+    \begin{proof}
+      Let $x \in (a, b)$, or equivlently $a < x < b$. We can choose $r = \min(x - a, b - x)$ which must be positive as $x$ is strictly between $a$ and $b$. Then we denote $y \in (x - r, x + r)$, or $x - r < y < x + r$. Using the definition of $r$, we can rewrite $r \leq x - a$ as $a \leq x - r.$ Likewise, we can express $r$ as $r \leq b - x$ which simplifies to $x + r \leq b$. Therefore, we have $a \leq x - r < y < x + r \leq b$, or $y \in (a, b)$. Thus, $(x - r, x + r) \subseteq (a, b)$, which proves that $(a, b)$ is an open set.
+    \end{proof}
+
+    \item Prove that the interval $(a, \infty)$ is an open set.
+    \begin{proof}
+      Let $x \in (a, \infty)$. Set $r = x - a$, which must be positive as $x$ is strictly greater than $a$. Then we denote $y \in (x - r, x + r)$, or $x - r < y < x + r$. Substituting $r$ gives us $x - (x - a) < y < x + (x - a)$, or $a < y < 2x - a$. As $y \in (a, 2x - a) \forall x \in (a, \infty)$, the set $(a, \infty)$ is open. 
+    \end{proof}
+    
+    \item Prove that $\emptyset$ and $\mathbb{R}$ are open sets.
+    \begin{proof}
+      For $\emptyset$, there are no elements $x$ in the set, so the condition is trivially satisfied. For $\mathbb{R}$, for any $x \in \mathbb{R}$, we can choose $r = 1$, which gives us $(x - 1, x + 1)\subseteq \mathbb{R}$.
+    \end{proof}
+
+    \item Prove that the union and intersection of two open sets is an open set.
+    \begin{proof}
+      Let $S_1$ and $S_2$ be two open sets. Let $x \in S_1 \cup S_2$. Without a loss of generality, assume that $x \in S_1$. By the definition of an open set, there exists a positive number $r_1$ such that $(x - r_1, x + r_1) \subseteq S_1$. Similarly, if $x \in S_2$, there exists a positive number $r_2$ such that $(x - r_2, x + r_2) \subseteq S_2$. Let $r = \min(r_1, r_2)$, which is also positive. Then we have $(x - r, x + r) \subseteq S_1 \cup S_2$, proving that the union of two open sets is an open set.
+      
+      \noindent The same logic holds for the intersection of two open sets, $x \in S_1 \cap S_2$. Let $r_1 > 0$ such that $(x - r_1, x + r_1) \subseteq S_1$ and $r_2 > 0$ such that $(x - r_2, x + r_2) \subseteq S_2$. Let $r = \min(r_1, r_2) > 0$. Then we have $(x - r, x + r) \subseteq S_1 \cap S_2$, proving that the intersection of two open sets is an open set.
+    \end{proof}
+    
+    \newpage
+    \item Prove that the interval $[a,b]$ is a closed set.
+    \begin{proof}
+      The set $S = [a, b]$ is closed if its complement $\mathbb{R} \setminus S$ is open. This complement $S^\complement$ is given by $(-\infty, a) \cup (b, \infty)$. To show that $(-\infty, a)$ is open, let $x \in (-\infty, a)$. We can choose $r = a - x$, which is positive as $x < a$. Then we have $(x - r, x + r) = (x - (a - x), x + (a - x)) = (2x - a, 2x - a + 2(a - x)) = (2x - a, a)$, which is contained in $(-\infty, a)$. A similar proof can be done for the set $(b, \infty)$, as is shown in subproblem (b). As the complement $S^\complement$  of $[a, b]$ is an open set, the set $[a, b]$ is closed.
+    \end{proof}
+
+    \item Use the previous results to justify the use of the adjectives open and closed in the statement of Theorem 1.9.
+    \begin{proof}
+      As shown in subproblems (a), (b), (c), (d), and (e), an interval $(a, b)$ is open if 
+      \[
+        \forall x, y \in (a, b) \exists r > 0 \text{ such that } (x - r, x + r) \subseteq (a, b).
+      \]
+      That is, every point in the interval $(a, b)$ has a neighborhood that is also contained in the interval. Conversely, as shown in subproblem (e), an interval $[a, b]$ is closed if its complement $S^\complement = R \setminus [a, b]$ is open, which can be expressed as
+      \[
+        S^\complement = (-\infty, a) \cup (b, \infty).
+      \]
+      As the interval includes its boundary points $a$ and $b$, a neighborhood around these points will extend outside of the interval. Logically, this means that the interval $[a, b]$ is closed and its complement (everything not in the interval) is open. The adjectives open and closed are thus justified in the statement of Theorem 1.9, as they describe the intuitive nature of the intervals in question.
+    \end{proof}
+
+  \end{enumerate}
+  \newpage
+
+
+
+  \section*{Problem 24}
+  Let $n$ be a positive integer and let $a_1, a_2, \ldots, a_n$ be nonnegative real numbers. Prove that the arithmetic mean and the geometric mean of this set of numbers lie in the closed interval $[m, M]$, where $m = \text{min}(a_1, a_2, \ldots, a_n)$ and $M = \text{max}(a_1, a_2, \ldots, a_n)$.
+
+  \begin{proof}
+    Let $A$ be the arithmetic mean and $G$ be the geometric mean of the set of numbers. We have:
+    \[
+    A = \frac{a_1 + a_2 + \ldots + a_n}{n}
+    \]
+    and
+    \[
+    G = (a_1 a_2 \ldots a_n)^{1/n}.
+    \]
+    We can apply theorem 1.12 (The AM-GM inequality), which states that for nonnegative real numbers, the geometric mean is less than than or equal to the arithmetic mean, with equality occuring if and only if $a_1 = a_2 = \ldots = a_n$.
+    \[
+    G \leq A.
+    \]
+    The case where $a_1 = a_2 = \ldots = a_n$ is trivial, as both the arithmetic and geometric means equal the common value of the $a_i$'s, i.e. $A = G = a_1 = a_2 = \ldots = a_n$ = $m$ = $M$.
+    
+    \medbreak 
+    \noindent Without a loss of generality, assume that the set is in sorted order so that 
+    \[
+      \forall k \in \{2, \ldots,  n\}, a_{k-1} \leq a_k)
+    \]
+    and moreover that not all $a_i$'s are equal, i.e.
+    \[
+      \exists k \in \{2, \ldots, n\} \text{ with } a_{k-1} < a_k.
+    \] 
+    This ordering implies that $m = a_1$ and $M = a_n$.
+    Assume that $G < m$. This can equivlently be written as $(a_1 a_2 \ldots a_n)^{1/n} < a_1$. Because there is some index k so that $a_1 < a_k$, we can write that $a_1^n < a_1 \ldots a_k \ldots a_n$. Taking the $n$th root of both sides gives us $a_1 < (a_1 \ldots a_k \ldots a_n)^{1/n}$ or $m < G$, which contradicts the assumption that $G < m$. Therefore, we must have $m \leq G$.
+    
+    \medbreak 
+    \noindent By the same logic, we can assume that $A > M$. This can equivlently be written as $\frac{a_1 + a_2 + \ldots + a_n}{n} > a_n$. Because there is some index k so that $a_{k-1} < a_n$, we can write that $a_1 + \ldots + a_{k-1}+ \ldots + a_n < n(a_n)$. Diving by $n$ gives us $\frac{a_1 + \ldots + a_{k-1}+ \ldots + a_n}{n} < a_n$ or $A < M$, which contradicts the assumption that $A > M$. 
+    
+    \medbreak
+    \noindent In summary, we have shown that $m \leq G \leq A \leq M$, which implies that both the arithmetic mean and geometric mean lie in the closed interval $[m, M]$.
+  \end{proof}
+
+
+  
+\end{document}
