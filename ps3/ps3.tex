@@ -1,0 +1,145 @@
+\documentclass[12pt]{article}
+\usepackage{fullpage,enumitem,amsmath,amssymb,graphicx,amsthm,fancyhdr}
+\usepackage{../../../macros}
+
+\SetupAssignment{Math 35}{25X}{Homework 3}
+\author{Kiran Jones \\
+  \texttt{kiran.p.jones.27@dartmouth.edu}}
+\date{Due: July 16, 2025}
+
+\pagestyle{fancy}
+\lhead{Math 35 – HW 3}\rhead{Kiran Jones}\cfoot{\thepage}
+\setlength{\headheight}{14.49998pt}
+\setlength{\headsep}{10pt}
+
+
+\begin{document}
+  \maketitle
+  \thispagestyle{empty}
+  \noindent
+  \rule{\linewidth}{0.4pt}
+  \newpage
+  
+  
+  \section*{Problem 28, Section 1.3}
+  \setcounter{page}{1}
+  Let $A$ and $B$ be nonempty bounded sets. Prove that
+  \[
+    \inf(A \cup B) = \min\{\inf A, \inf B\} \quad \text{and} \quad \sup(A \cup B) = \max\{\sup A, \sup B\}.
+  \]
+  Is there an analogous result for $A \cap B$, assuming that this set is nonempty? Provide either a proof or a counterexample.
+
+  \begin{proof}
+    As $A$ and $B$ are nonempty bounded sets, we can define $a = \inf A$ and $b = \inf B$.
+    \begin{itemize}
+      \item If $a < b$, then for all $x \in A$, we have $x \geq a$ and for all $y \in B$, we have $y \geq b > a$. Thus, for all $z \in A \cup B$, we have $z \geq a$. Since $a$ is the infimum of $A$, the infimum of $B$ is greater than $a$ (i.e. $b > a$), and the two sets are bounded, $\inf(A \cup B) = a = \min\{a, b\}$.
+      \item If $b < a$, then by similar reasoning, we can show that $\inf(A \cup B) = b = \min\{a, b\}$.
+      \item If $a = b$, then $\inf(A \cup B) = a = b = \min\{a, b\}$.
+    \end{itemize}
+    To prove that $\sup(A \cup B) = \max\{\sup A, \sup B\}$ let $c = \sup A$ and $d = \sup B$.
+
+    \begin{itemize}
+      \item If $c < d$, then for all $x \in A$, we have $x \leq c < d$ and for all $y \in B$, we have $y \leq d$. Thus, for all $z \in A \cup B$, we have $z \leq d$. Since $d$ is the supremum of $B$, the supremum of A is less than $d$ (i.e. $c < d$), and the two sets are bounded, $\sup(A \cup B) = d = \max\{c, d\}$.
+      \item If $d < c$, then by similar reasoning, we can show that $\sup(A \cup B) = c = \max\{c, d\}$.
+      \item If $c = d$, then $\sup(A \cup B) = c = d = \max\{c, d\}$.
+    \end{itemize}
+    Now, we will consider the intersection $A \cap B$. If $A \cap B$ is nonempty, then we can define $e = \inf(A \cap B)$ and $f = \sup(A \cap B)$. 
+    \begin{itemize}
+      \item Letting $a = \inf A$ and $b = \inf B$, we have $e \geq a$ and $e \geq b$. We can guarentee that $e \geq \max\{a, b\}$. In the case of equality $a = b = e$, which means that $A$ and $B$ share an infimum. If this is the case, then $\inf(A \cap B) = a = b = e$. In all other cases, the greatest lower bound of the intersection can only occur once both lowest bounds have been satisfied of both sets, i.e. $e \geq \max\{a, b\}$.
+      \item Similarly, letting $c = \sup A$ and $d = \sup B$, we have $f \leq c$ and $f \leq d$. We can guarentee that $f \leq \min\{c, d\}$. In the case of equality $c = d = f$, which means that $A$ and $B$ share a supremum. If this is the case, then $\sup(A \cap B) = c = d = f$. In all other cases, the least upper bound of the intersection can only occur once both highest bounds have been satisfied for both sets, i.e. $f \leq \min\{c, d\}$.
+    \end{itemize}
+
+
+  \end{proof}
+
+  \newpage
+
+
+
+  \section*{Problem 4, Section 1.4}
+  Let $S$ be a nonempty set of real numbers that is bounded above and let $\beta = \sup S$. Suppose that $\beta \notin S$. Prove that for each $\epsilon > 0$, the set $\{x \in S : x > \beta - \epsilon\}$ is infinite.
+  \begin{proof}
+    Assume that the set $T = {}\{x \in S : x > \beta - \epsilon\}$ is finite. Then, there exists some $x_0 \in T$ such that $x_0 = \max T$. As $x_0 \in T$ and $T \subset S$, we have $x_0 \in S$. As $\beta$ is the supremum of $S$ and $\beta \notin S$, we have $\beta > x_0$. Let $\epsilon = {\beta - x_0} > 0$. Then, we have 
+    \[
+      T = \{x \in S : x > \beta - (\beta - x_0)\} = \{x \in S : x > x_0\}.
+    \]
+    However, as $x_0$ is the maximum of $T$, there are no elements in $T$ that are greater than $x_0$. This contradiction implies that the set $T$ cannot be finite, and thus must be infinite. Therefore, for any $\epsilon > 0$, the set $\{x \in S : x > \beta - \epsilon\}$ is infinite.
+  \end{proof}
+
+  \newpage
+
+
+
+  \section*{Problem 7, Section 1.4}
+  Prove that the union of two disjoint countably infinite sets is countably infinite by finding a one-to-one correspondence between the union of the sets and the set $\mathbb{Z}^+$
+  \begin{proof}
+    Let $A$, $B$, be two disjoint countably infinite sets. As they are countably infinite, there exists some pair of functions, $f_1$ and $f_2$ such that $f_1: A \mapsto \mathbb{Z}^+$ and $f_2: B \mapsto \mathbb{Z}^+$ are both one to one and onto. Let $f_3: A \cup B \mapsto \mathbb{Z}^+$ where 
+    \[
+      f_3: \begin{cases} 
+        2f_1(n) & \text{if } n \in A \\
+        2f_2(n)-1 & \text{if } n \in B 
+      \end{cases}
+    \]
+    As $A \cap B = \emptyset$, $f_3$ is well defined. As all elements in $A$ are mapped to even numbers and all elements in $B$ are mapped to odd numbers, the union $A \cup B$ is a countably infinite set.
+  
+  \end{proof}
+
+  \newpage
+
+
+
+  \section*{Problem 7, Section 2.1}
+  Find an example of a sequence with the given property.
+  \begin{enumerate}[label=(\alph*)]
+    \item The sequence is monotone but not bounded.
+    
+    $\{a_n\}_{n=1}^\infty\quad\text{with}\quad a_n = n\quad(n\in\mathbb{N}).$
+    \item The sequence is bounded but not monotone. 
+    
+    $\{a_n\}_{n=1}^\infty\quad\text{with}\quad a_n = (-1)^n\quad(n\in\mathbb{N}).$
+    \item The sequence is bounded and strictly increasing. 
+    
+    $\{a_n\}_{n=1}^\infty\quad\text{with}\quad a_n = 1-\frac{1}{n}\quad(n\in\mathbb{N}).$
+    \item The sequence is convergent but not monotone. 
+    
+    $\{a_n\}_{n=1}^\infty\quad\text{with}\quad a_n = \frac{(-1)^n}{n}\quad(n\in\mathbb{N}).$
+    \item The sequence is strictly decreasing but not convergent. 
+    
+    $\{a_n\}_{n=1}^\infty\quad\text{with}\quad a_n = -n\quad(n\in\mathbb{N}).$
+    \item The sequence is neither bounded nor monotone.
+    
+    $\{a_n\}_{n=1}^\infty\quad\text{with}\quad a_n = (-n)^n\quad(n\in\mathbb{N}).$
+    \item The sequence is bounded below, not bounded above, and contains an infinite number of negative terms.
+    
+
+    $\{a_n\}_{n=1}^\infty\quad\text{with}\quad a_n = \begin{cases} 
+      -1 & \text{if } n \mod 2 = 1 \\
+      n & \text{if } n \mod 2 = 0.
+    \end{cases}$
+  \end{enumerate}
+
+  \newpage
+
+
+
+  \section*{Problem 12, Section 2.1}
+  Let $\{a_n\}$ and $\{b_n\}$ be two sequences and suppose that the set $\{n : a_n \neq b_n\}$ is finite. Prove that the sequences either both converge to the same limit or both diverge.
+
+  \begin{proof}
+    Let $S = \{n : a_n \neq b_n\}$. As $S$ is finite, $\exists x \in \mathbb{R} \text{ such that } x = \max S$. Hence, for all $n \in \mathbb{N} : n > x$, we have $a_n=b_n$. If $a_n$ converges to some $L \in \mathbb{R}$, this implies that $b_n$ also converges to this same $L$. By the same logic, if $a_n$ does not converge then $b_n$ cannot either as $a_n = b_n$ where $n > x$. Thus, if $a_n$ converges, then $b_n$ converges to the same limit, and if $a_n$ diverges, then $b_n$ diverges as well.    
+  \end{proof}
+
+  \newpage
+
+\section*{Problem 36, Section 2.1}
+Let ${a_n}$ and ${b_n}$ be two convergent sequences with limits $a$ and $b$, respectively, and suppose that $a_n \leq b_n$ for all $n$. Prove that $a \leq b$.
+\begin{proof} 
+  Assume that $a > b$. Let $\epsilon = \frac{a - b}{2}$, which is always positive as $a - b > 0$. From the definition of a convergent sequence, we have $\exists N > 0$, $ \forall n > N$, $|a_n - a| < \epsilon = \frac{a - b}{2}$. This can be expressed as $a - \frac{a - b}{2} < a_n < a + \frac{a - b}{2}$, or partially as $\frac{a + b}{2} < a_n$. Similarly, we can write $|b_n - b| < \epsilon = \frac{a - b}{2}$, leading to  $b - \frac{a - b}{2} < b_n < b + \frac{a - b}{2}$, with the right side reducing to $b_n < \frac{a + b}{2}$. Rearanging these inequalities yields
+  \[
+    \frac{a + b}{2} < a_n \leq b_n < \frac{a + b}{2}
+  \]
+  which is a contradiction. Therefore, our assumption that $a > b$ must be false, and we conclude that $a \leq b$.
+
+\end{proof}
+  
+\end{document}
