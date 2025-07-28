@@ -1,0 +1,119 @@
+\documentclass[12pt]{article}
+\usepackage{fullpage,enumitem,amsmath,amssymb,graphicx,amsthm,fancyhdr}
+\usepackage{../../../macros}
+
+\SetupAssignment{Math 35}{25X}{Homework 4}
+\author{Kiran Jones \\
+  \texttt{kiran.p.jones.27@dartmouth.edu}}
+\date{Due: July 25, 2025}
+
+\pagestyle{fancy}
+\lhead{Math 35 – HW 4}\rhead{Kiran Jones}\cfoot{\thepage}
+\setlength{\headheight}{14.49998pt}
+\setlength{\headsep}{10pt}
+
+
+\begin{document}
+  \maketitle
+  \thispagestyle{empty}
+  \noindent
+  \rule{\linewidth}{0.4pt}
+  \newpage
+  
+  
+  \section*{Problem 12, Section 2.2}
+  Use the definition to prove that $\{\frac{n}{n+3}\}$ is a Cauchy sequence.
+  \begin{proof}
+    Let $\epsilon > 0$ be given, and assume that $\{\frac{n}{n+3}\}$ is Cauchy. We want to find $N$ such that for all $m, n \geq N$, we have
+    \[
+      \left| \frac{n}{n+3} - \frac{m}{m+3} \right| < \epsilon.
+    \]
+    We can rewrite this as
+    \[
+      \left| \frac{n(m+3) - m(n+3)}{(n+3)(m+3)} \right| = \left| \frac{3(n-m)}{(n+3)(m+3)} \right|.
+    \]
+    Since $(n+3)(m+3) > 0$ for all $n, m > 0$, Without a loss of generality, assume $m \geq n$. Letting $\epsilon = \frac{3(m+n)}{(m+3)(n+3)} > 0$ yields
+    \[
+      \frac{3(n-m)}{(m+3)(n+3)} < \frac{3(m+n)}{(m+3)(n+3)} = \frac{3}{n+3}
+    \]
+    As $n > N$, $n+3 > N+3$, and $\frac{3}{n+3} < \frac{3}{N+3}$. Using any $\epsilon > \frac{3}{N+3}$ the sequence is therefore Cauchy.
+  \end{proof}
+
+  \newpage
+
+
+
+  \section*{Problem 20, Section 2.2}
+  Let $x_n$ be a sequence and suppose that the sequence $\{x_{n+1}-x_n\}$ converges to $0$. Give an example to show that the sequence $\{x_n\}$ may not converge. Hence, the condition that $|x_n-x_m|<\epsilon$ for all $m, n \geq N$ is crucial in the definition of a Cauchy sequence.
+  \begin{proof}
+    Let $\{x_n\} = \log n$. The sequence $\{x_{n+1}-x_n\} = \log(n+1) - \log(n)$ converges to $0$ as $n \to \infty$. However, the sequence $\{x_n\} = \log n$ is unbounded, as $\forall M \in \mathbb{R}$, $\exists n$ such that $\log n > M$, where $n = 10^M+1$. Hence, the sequence $\{x_n\}$ does not converge.
+
+  \end{proof}
+  
+  \newpage
+
+
+
+  \section*{Problem 3, Section 2.3}
+  Provide an example of a sequence with the given property.
+  \begin{enumerate}[label=(\alph*)]
+    \item a sequence that has subsequence that converge to 1, 2, and 3
+    
+    $x_n = (n\mod3) + 1$
+    \item a sequence that has subsequence that converge to $\infty$ and $-\infty$
+    
+    $x_n = (-1)^n n$
+    \item a sequence that has a strictly increasing subsequence, a strictly decreasing subsequence, and a constant subsequence
+    
+    $x_n = \begin{cases} 
+      0 & \text{if } n \mod 3 = 0 \\
+      n & \text{if } n \mod 3 = 1 \\
+      -n & \text{if } n \mod 3 = 2 \\
+    \end{cases}$
+    \item an unbounded sequence which has a convergent subsequence
+    
+    $x_n = \begin{cases} 
+      0 & \text{if } n \mod 2 = 0 \\
+      n & \text{if } n \mod 2 = 1 \\
+    \end{cases}$
+    \item a sequence that has no convergent subsequence
+    
+    $x_n = n$
+  \end{enumerate}
+
+  \newpage
+
+
+  \section*{Problem 9, Section 2.3}
+  Let $\{a_n\}$ be an unbounded sequence. Prove that there exists a subsequnce $\{a_{p_n}\}$ of $\{a_n\}$ such that ${\{\frac{1}{a_{p_n}}\}}$ converges to $0$.
+  \begin{proof}
+    As $\{a_n\}$ is unbounded, we can choose an arbitrary subsequence ${a_{p_n}}$ that is strictly increasing. This gives us the reciprocal subsequence $\{\frac{1}{a_{p_n}}\}$, which must be strictly decreasing. As $a_{p_n} \to \infty$, we have $\frac{1}{a_{p_n}} \to 0$. Thus, the subsequence $\{\frac{1}{a_{p_n}}\}$ converges to $0$.
+  \end{proof}
+
+  \newpage
+
+
+
+  \section*{Problem 17, Section 2.3}
+  Find the limit inferior and limit superior of the given sequence.
+  \begin{enumerate}[label=(\alph*)]
+    \item $\{(\frac{n}{3}) - \lfloor\frac{n}{3}\rfloor\}$
+    
+    lim sup = $\frac{2}{3}$, lim inf = $0$    
+    \item $\{(-1)^n(1 + \frac{1}{n})\}$
+    
+    lim sup = $1$, lim inf = $-1$
+    \item $\{n \sin(\frac{\pi n}{3})\}$
+
+    lim sup = $\infty$, lim inf = $-\infty$
+  \end{enumerate}  
+  \newpage
+
+\section*{Problem 18, Section 2.3}
+Find the limit inferior and limit superior of the sequence $\{\lfloor 5\sin n\rfloor\}$.
+
+\begin{proof}
+  The sequence $\{\lfloor \sin n\rfloor\}$ is bounded between $-5$ and $4$. The limit inferior is the greatest lower bound of the set of subsequential limits, which is $-5$, and the limit superior is the least upper bound of the set of subsequential limits, which is $4$. Hence, lim sup = $4$ and lim inf = $-5$.
+\end{proof}
+  
+\end{document}
